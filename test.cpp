@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-
+using namespace std ;
 int main() {
     std::ofstream outFile("image.ppm");
 
@@ -11,6 +11,8 @@ int main() {
 
     for (int i=0;i<image_height;i++){
         for (int j=0;j<image_width;j++){
+            clog << "\r ScanLines remaining: " << (image_height - j)<< " " << std::flush;
+
             double a  = (double)i/image_height;
             double b = (double)j/image_height;
             double c = 0.0;
@@ -20,7 +22,7 @@ int main() {
 
         }
     }
-
+    clog << "\rDone";
     outFile.close();
     return 0;
 }
